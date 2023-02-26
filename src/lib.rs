@@ -592,7 +592,7 @@ fn parse_code_block(
         log::warn!("unknown theme name: {}", highlight_theme_name);
     }
 
-    if let (Some(syntax), Some(theme)) = (syntax_opt, theme_opt) {
+    let content = if let (Some(syntax), Some(theme)) = (syntax_opt, theme_opt) {
         let mut highlight_lines = HighlightLines::new(syntax, theme);
         let mut pango_str = String::new();
         for line in LinesWithEndings::from(content) {
@@ -629,7 +629,7 @@ fn parse_code_block(
                 };
 
                 pango_str.push_str(&format!(
-                    "{}{}{}<span foreground=\"#{:02x?}{:02x?}{:02x?}\"><tt>{}</tt></span>{}{}{}",
+                    "{}{}{}<span foreground=\"#{:02x?}{:02x?}{:02x?}\">{}</span>{}{}{}",
                     bold_start,
                     italic_start,
                     underline_start,
@@ -643,30 +643,21 @@ fn parse_code_block(
                 ));
             }
         }
-        code_block_box.append(
-            &gtk::Label::builder()
-                .use_markup(true)
-                .justify(gtk::Justification::Left)
-                .halign(gtk::Align::Start)
-                .selectable(true)
-                .wrap(true)
-                .focusable(false)
-                .label(pango_str)
-                .build(),
-        );
+        pango_str
     } else {
-        code_block_box.append(
-            &gtk::Label::builder()
-                .use_markup(false)
-                .justify(gtk::Justification::Left)
-                .halign(gtk::Align::Start)
-                .selectable(true)
-                .wrap(true)
-                .focusable(false)
-                .label(content)
-                .build(),
-        );
-    }
+        html_escape(content)
+    };
+    code_block_box.append(
+        &gtk::Label::builder()
+            .use_markup(true)
+            .justify(gtk::Justification::Left)
+            .halign(gtk::Align::Start)
+            .selectable(true)
+            .wrap(true)
+            .focusable(false)
+            .label(format!("<tt>{content}</tt>"))
+            .build(),
+    );
 
     outer_box.append(&code_block_box);
     root.append(&outer_box);
