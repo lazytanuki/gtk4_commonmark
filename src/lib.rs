@@ -406,9 +406,12 @@ fn append_widgets_from_children<'a>(
             }
             Node::Link(link) => {
                 if let Some(link_label) = current_label {
-                    label_append(link_label, &format!("<u><a href=\"{}\">", link.url));
+                    label_append(
+                        link_label,
+                        &format!("<u><a href=\"{}\">", html_escape(&link.url)),
+                    );
                     if let Some(title) = &link.title {
-                        label_append(link_label, &format!("{}</a></u>", title));
+                        label_append(link_label, &format!("{}</a></u>", html_escape(title)));
                     } else {
                         append_widgets_from_children(
                             &link.children,
