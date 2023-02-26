@@ -2,7 +2,19 @@
 >
 > This library is in **alpha** state. Not all features have yet been implemented, and breaking API changes can still happen.
 
-A library to render different flavors of the CommonMark (markdown) language as GTK4 widgets.
+A library to render different flavors of the CommonMark ([markdown](https://github.com/wooorm/markdown-rs)) language as GTK4 widgets.
+
+It currently supports:
+
+- headings
+- block quotes
+- bold, italic
+- strike-through
+- (unordered) lists, nested lists and their nested paragraphs
+- inline and fenced code (with syntax highlighting from the [syntect](https://github.com/trishume/syntect) crate)
+- links
+- tables
+- local images
 
 # Example
 
@@ -43,9 +55,11 @@ root.container_add(&clamp);
   - [ ] `MdxJsxTextElement`
   - [ ] `MdxTextExpression`
   - [ ] `MdxFlowExpression`
+- [ ] wait for the [markdown-rs](https://github.com/wooorm/markdown-rs) crate to supported ordered lists to implement them
 - [ ] publish on crates.io
 
 # Acknowledgements
 
 - Thanks the [markdown-rs](https://github.com/wooorm/markdown-rs) crate author and contributors for making a robust and safe Markdown parser.
 - Thanks to the [GTK](https://www.gtk.org/) and [gtk4-rs](https://github.com/gtk-rs/gtk4-rs) devs and contributors!
+- Thanks to the [syntect](https://github.com/trishume/syntect) crate devs and contributors!
