@@ -583,7 +583,7 @@ fn parse_code_block(
 
     let syntax_opt = language_name.and_then(|l| {
         ps.find_syntax_by_token(l).or_else(|| {
-            log::warn!("test");
+            log::warn!("unable to find syntax for language \"{l}\"");
             None
         })
     });
