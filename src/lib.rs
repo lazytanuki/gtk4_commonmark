@@ -696,6 +696,6 @@ fn load_css() {
             gtk::STYLE_PROVIDER_PRIORITY_APPLICATION,
         );
     } else {
-        log::error!("unaleb to load CSS for commonmark renderer: could not connect to a display")
+        log::error!("unable to load CSS for commonmark renderer: could not connect to a display")
     }
 }
