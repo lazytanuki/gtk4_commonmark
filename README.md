@@ -4,7 +4,7 @@
 
 A library to render different flavors of the CommonMark (markdown) language as GTK4 widgets.
 
-## Example
+# Example
 
 ```rust
 // Parse the input and get a `gtk::Viewport` in return
@@ -22,7 +22,7 @@ root.container_add(&clamp);
 
 ![Example render](examples/example_render.png)
 
-## To do
+# To do
 
 - [ ] add the option to load images from the Internet
 - [ ] implement embedding images at compile-time
@@ -44,3 +44,8 @@ root.container_add(&clamp);
   - [ ] `MdxTextExpression`
   - [ ] `MdxFlowExpression`
 - [ ] publish on crates.io
+
+# Acknowledgements
+
+- Thanks the [markdown-rs](https://github.com/wooorm/markdown-rs) crate author and contributors for making a robust and safe Markdown parser.
+- Thanks to the [GTK](https://www.gtk.org/) and [gtk4-rs](https://github.com/gtk-rs/gtk4-rs) devs and contributors!
