@@ -518,7 +518,6 @@ fn append_widgets_from_children<'a>(
                     picture.set_hexpand(true);
                     picture.set_vexpand(true);
                     picture.set_can_shrink(true);
-                    picture.set_content_fit(gtk::ContentFit::Contain);
                     root.append(&picture);
                 }
                 ImageSetting::IncludeBytes => todo!(),
