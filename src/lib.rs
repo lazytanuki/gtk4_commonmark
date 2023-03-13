@@ -580,12 +580,7 @@ fn parse_code_block(
         .hexpand(false)
         .build();
 
-    let syntax_opt = language_name.and_then(|l| {
-        ps.find_syntax_by_token(l).or_else(|| {
-            log::warn!("unable to find syntax for language \"{l}\"");
-            None
-        })
-    });
+    let syntax_opt = language_name.and_then(|l| ps.find_syntax_by_token(l).or_else(|| None));
     let theme_opt = &ts.themes.get(highlight_theme_name);
     if theme_opt.is_none() {
         log::warn!("unknown theme name: {}", highlight_theme_name);
